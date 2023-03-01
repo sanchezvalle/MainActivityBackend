@@ -2,14 +2,14 @@
 include "Database.php";
 
 $connection = Database::getInstance()->getConnection();
-$actividad = $_POST['actividad'];
+$actividadPost = $_POST['actividad'];
 
-$sql = "SELECT calificacion FROM evento WHERE nombre LIKE $actividad";
+$sql = "SELECT calificacion FROM evento WHERE nombre LIKE '$actividadPost'";
 $query = $connection->query($sql);
 $json = array();
 
 if($query->num_rows){
-    while($row = $query->num_rows){
+    while($row = $query->fetch_assoc()){
         $json['calificacion'][] = $row;
     }
 }

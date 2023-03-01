@@ -5,9 +5,9 @@ $connection = Database::getInstance()->getConnection();
 $actividad = $_POST['actividad'];
 $rating = $_POST['rating'];
 
-$sqlUpdate = "UPDATE evento SET calificacion=((calificacion+$rating)/2) WHERE nombre LIKE $actividad";
-$sqlNew = "UPDATE evento SET calificacion=$rating WHERE nombre LIKE $actividad";
-$sqlCheck = "SELECT calificacion FROM evento WHERE nombre LIKE $actividad";
+$sqlUpdate = "UPDATE evento SET calificacion=((calificacion+$rating)/2) WHERE nombre LIKE '$actividad'";
+$sqlNew = "UPDATE evento SET calificacion=$rating WHERE nombre LIKE '$actividad'";
+$sqlCheck = "SELECT calificacion FROM evento WHERE nombre LIKE '$actividad'";
 
 $selectQuery = $connection->query($sqlCheck);
 if($selectQuery->num_rows){
